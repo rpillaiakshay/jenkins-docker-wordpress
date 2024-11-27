@@ -13,9 +13,7 @@ services:
       WORDPRESS_DB_PASSWORD: asd123
     volumes:
       - wordpress_data:/var/www/html
-    networks:
-      - network_25
-
+    
   mysql:
     image: mysql:5.7
     container_name: mysql
@@ -28,13 +26,7 @@ services:
       - db_data:/var/lib/mysql
     ports:
       - "9050:3306"
-    networks:
-      - network_25
-
-networks:
-  network_25:
-    driver: bridge
-
+      
 volumes:
   wordpress_data:
   db_data:
