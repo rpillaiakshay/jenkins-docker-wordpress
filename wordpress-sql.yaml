@@ -15,7 +15,7 @@ services:
       - wordpress_data:/var/www/html
     networks:
       - network_25
-      depends_on:
+    depends_on:
       - mysql
 
   mysql:
