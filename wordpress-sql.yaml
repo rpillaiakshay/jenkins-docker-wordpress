@@ -1,29 +1,39 @@
-version: '3'
+version: '3.8'
 
 services:
   wordpress:
     image: wordpress:latest
-    restart: always
+    container_name: wordpress
     ports:
-      - "8092:80"  
+      - "8084:80"
     environment:
-      WORDPRESS_DB_HOST: db:3306
-      WORDPRESS_DB_NAME: wordpress
-      WORDPRESS_DB_USER: kzr
-      WORDPRESS_DB_PASSWORD: password
+      WORDPRESS_DB_HOST: mysql:3306
+      WORDPRESS_DB_NAME: akshay
+      WORDPRESS_DB_USER: akshay
+      WORDPRESS_DB_PASSWORD: asd123
     volumes:
       - wordpress_data:/var/www/html
+    networks:
+      - network_25
 
-  db:
+  mysql:
     image: mysql:5.7
-    restart: always
+    container_name: mysql
     environment:
-      MYSQL_ROOT_PASSWORD: root_password
-      MYSQL_DATABASE: wordpress
-      MYSQL_USER: kzr
-      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: asd123
+      MYSQL_DATABASE: akshay
+      MYSQL_USER: akshay
+      MYSQL_PASSWORD: asd123
     volumes:
       - db_data:/var/lib/mysql
+    ports:
+      - "9050:3306"
+    networks:
+      - network_25
+
+networks:
+  network_25:
+    driver: bridge
 
 volumes:
   wordpress_data:
