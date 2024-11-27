@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  wordpress:
+    image: wordpress:latest
+    container_name: wordpress
+    ports:
+      - "8084:80"
+    environment:
+      WORDPRESS_DB_HOST: mysql:3306
+      WORDPRESS_DB_NAME: akshay
+      WORDPRESS_DB_USER: akshay
+      WORDPRESS_DB_PASSWORD: asd123
+    volumes:
+      - wordpress_data:/var/www/html
+    networks:
+      - network_25
+
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: asd123
+      MYSQL_DATABASE: akshay
+      MYSQL_USER: akshay
+      MYSQL_PASSWORD: asd123
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - "9050:3306"
+    networks:
+      - network_25
+
+networks:
+  network_25:
+    driver: bridge
+
+volumes:
+  wordpress_data:
+  db_data:
