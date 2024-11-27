@@ -5,7 +5,7 @@ services:
     image: wordpress:latest
     container_name: wordpress
     ports:
-      - "8020:80"
+      - "8060:80"
     environment:
       WORDPRESS_DB_HOST: mysql:3306
       WORDPRESS_DB_NAME: akshay
@@ -14,7 +14,7 @@ services:
     volumes:
       - wordpress_data:/var/www/html
     networks:
-      - network_25
+      - network_28
     depends_on:
       - mysql
 
@@ -31,10 +31,10 @@ services:
     ports:
       - "9070:3306"
     networks:
-      - network_25
+      - network_28
 
 networks:
-  network_25:
+  network_28:
     driver: bridge
 
 volumes:
