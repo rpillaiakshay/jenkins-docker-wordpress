@@ -1,11 +1,10 @@
-version: '3.8'
-
+version: '3'
 services:
   wordpress:
     image: wordpress:latest
     container_name: wordpress
     ports:
-      - "8060:80"
+      - "8070:80"
     environment:
       WORDPRESS_DB_HOST: mysql:3306
       WORDPRESS_DB_NAME: akshay
@@ -14,8 +13,7 @@ services:
     volumes:
       - wordpress_data:/var/www/html
     networks:
-      - network_28
-
+      - network_29
   mysql:
     image: mysql:5.7
     container_name: mysql
@@ -27,14 +25,12 @@ services:
     volumes:
       - db_data:/var/lib/mysql
     ports:
-      - "9010:3306"
+      - "9011:3306"
     networks:
-      - network_28
-
+      - network_29
 networks:
-  network_28:
+  network_29:
     driver: bridge
-
 volumes:
   wordpress_data:
   db_data:
